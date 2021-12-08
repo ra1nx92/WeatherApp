@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WheaterApp</string>
+    <string name="app_name">WeatherApp</string>
     <string name="error_message">Error, Try Again!</string>
     <string name="city_name">Город</string>
     <string name="info">info</string>

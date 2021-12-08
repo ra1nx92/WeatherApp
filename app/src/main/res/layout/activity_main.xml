@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_screen"
-    tools:context=".MainActivity">
+    tools:context=".data.presentation.screen.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -54,19 +54,19 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:endIconMode="clear_text"
-                    android:background="@color/purple_700">
+                    android:background="@color/purple_700"
+                    app:endIconMode="clear_text">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edt_city_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/teal_700"
                         android:hint="@string/city_name_et"
                         android:inputType="text"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textStyle="bold"
-                        android:background="@color/teal_700"/>
+                        android:textStyle="bold" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,10 +83,7 @@
                 android:id="@+id/ll_data"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_degree"
@@ -119,16 +116,16 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/city_code"
-                                android:textStyle="bold"
-                                android:textSize="23sp" />
+                                android:textSize="23sp"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/tv_city_name"
-                                android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/city_name"
-                                android:textSize="23sp" />
+                                android:textSize="23sp"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -162,31 +159,31 @@
 
 
                             <TextView
-                                android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/humidity" />
+                                android:text="@string/humidity"
+                                android:textStyle="bold" />
 
 
                             <TextView
-                                android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/wind_speed" />
+                                android:text="@string/wind_speed"
+                                android:textStyle="bold" />
 
 
                             <TextView
-                                android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/width" />
+                                android:text="@string/width"
+                                android:textStyle="bold" />
 
 
                             <TextView
-                                android:textStyle="bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/longitude" />
+                                android:text="@string/longitude"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -197,32 +194,32 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:textStyle="bold"
                                 android:id="@+id/tv_humidity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/info" />
+                                android:text="@string/info"
+                                android:textStyle="bold" />
 
                             <TextView
-                                android:textStyle="bold"
                                 android:id="@+id/tv_wind_speed"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/info" />
+                                android:text="@string/info"
+                                android:textStyle="bold" />
 
                             <TextView
-                                android:textStyle="bold"
                                 android:id="@+id/tv_lat"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/info" />
+                                android:text="@string/info"
+                                android:textStyle="bold" />
 
                             <TextView
-                                android:textStyle="bold"
                                 android:id="@+id/tv_lon"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/info" />
+                                android:text="@string/info"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 

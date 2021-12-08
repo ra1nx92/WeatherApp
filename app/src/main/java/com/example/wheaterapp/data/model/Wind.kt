@@ -1,6 +1,8 @@
 package com.example.wheaterapp.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Wind(
-    val deg: Int,
-    val speed: Double
+    @SerializedName("deg") val deg: Int,
+    @SerializedName("speed") val speed: Double
 )

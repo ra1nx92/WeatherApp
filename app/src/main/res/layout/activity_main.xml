@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipe_refresh_layout"
@@ -63,7 +64,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/teal_700"
                         android:hint="@string/city_name_et"
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         android:lines="1"
                         android:maxLines="1"
                         android:textStyle="bold" />
@@ -112,10 +113,10 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tv_city_code"
+                                android:id="@+id/tv_country_code"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/city_code"
+                                android:text="@string/country_code"
                                 android:textSize="23sp"
                                 android:textStyle="bold" />
 

@@ -1,13 +1,11 @@
 package com.example.wheaterapp.data.presentation.screen
 
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.wheaterapp.R
 import com.example.wheaterapp.data.presentation.viewModel.MainViewModel
 import com.example.wheaterapp.databinding.ActivityMainBinding
 
@@ -30,7 +28,36 @@ class MainActivity : AppCompatActivity() {
         val cName = GET.getString("cityName", "ankara")
         binding.edtCityName.setText(cName)
 
-        viewModel.refreshData()
+        viewModel.refreshData(cName ?: "")
+        getLiveData()
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            swipeRefresh(cName)
+        }
+
+        binding.imgSearchCity.setOnClickListener {
+            clickSearchCity()
+        }
+    }
+
+    private fun swipeRefresh(cName: String?) {
+        with(binding) {
+            llData.visibility = View.GONE
+            tvError.visibility = View.GONE
+            pbLoading.visibility = View.GONE
+
+            val cityName = GET.getString("cityName", cName)
+            edtCityName.setText(cityName)
+            viewModel.refreshData(cityName ?: "")
+            swipeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    private fun clickSearchCity() {
+        val cityName = binding.edtCityName.text.toString()
+        SET.putString("cityName", cityName)
+        SET.commit()
+        viewModel.refreshData(cityName)
         getLiveData()
     }
 
@@ -39,8 +66,9 @@ class MainActivity : AppCompatActivity() {
             data?.let {
                 with(binding) {
                     llData.visibility = View.VISIBLE
+                    pbLoading.visibility = View.GONE
                     tvDegree.text = data.main.temp.toString()
-                    tvCityCode.text = data.sys.country
+                    tvCountryCode.text = data.sys.country
                     tvCityName.text = data.name
                     tvHumidity.text = data.main.humidity.toString()
                     tvWindSpeed.text = data.wind.speed.toString()
@@ -48,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                     tvLon.text = data.coord.lon.toString()
 
                     Glide.with(this@MainActivity)
-                        .load("http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png")
+                        .load("https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
                         .into(imgWeatherPictures)
                 }
             }

@@ -3,10 +3,10 @@
     <string name="error_message">Error, Try Again!</string>
     <string name="city_name">Город</string>
     <string name="info">info</string>
-    <string name="longitude">Долгота</string>
-    <string name="width">Широта</string>
-    <string name="wind_speed">Скорость ветра</string>
-    <string name="humidity">Влажность</string>
-    <string name="city_code">Код города</string>
+    <string name="longitude">Долгота :</string>
+    <string name="width">Широта :</string>
+    <string name="wind_speed">Скорость ветра :</string>
+    <string name="humidity">Влажность :</string>
+    <string name="country_code">Код страны</string>
     <string name="city_name_et">Введите название города</string>
 </resources>

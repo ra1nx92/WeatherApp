@@ -1,6 +1,6 @@
-package com.example.wheaterapp.data.service
+package com.example.wheaterapp.data.network.service
 
-import com.example.wheaterapp.data.model.WeatherModel
+import com.example.wheaterapp.data.network.service.model.WeatherModel
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Retrofit

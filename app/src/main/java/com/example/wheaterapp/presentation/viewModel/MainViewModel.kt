@@ -2,8 +2,8 @@ package com.example.wheaterapp.data.presentation.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.wheaterapp.data.model.WeatherModel
-import com.example.wheaterapp.data.service.WeatherApiFactory
+import com.example.wheaterapp.data.network.service.model.WeatherModel
+import com.example.wheaterapp.data.network.service.WeatherApiFactory
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.observers.DisposableSingleObserver

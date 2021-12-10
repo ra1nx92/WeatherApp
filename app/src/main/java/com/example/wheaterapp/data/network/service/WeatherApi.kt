@@ -1,6 +1,6 @@
-package com.example.wheaterapp.data.service
+package com.example.wheaterapp.data.network.service
 
-import com.example.wheaterapp.data.model.WeatherModel
+import com.example.wheaterapp.data.network.service.model.WeatherModel
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

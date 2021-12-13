@@ -5,6 +5,7 @@ import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 object WeatherApiFactory {
 
@@ -12,12 +13,8 @@ object WeatherApiFactory {
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .build()
-        .create(WeatherApi::class.java)
 
 
-    fun getDataService(cityName:String): Single<WeatherModel>{
-        return retrofit.getWeatherData(cityName)
-    }
+    val dataService = retrofit.create(WeatherApi::class.java)
 }

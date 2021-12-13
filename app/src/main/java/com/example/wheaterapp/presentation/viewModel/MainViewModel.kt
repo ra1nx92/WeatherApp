@@ -1,4 +1,4 @@
-package com.example.wheaterapp.data.presentation.viewModel
+package com.example.wheaterapp.presentation.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

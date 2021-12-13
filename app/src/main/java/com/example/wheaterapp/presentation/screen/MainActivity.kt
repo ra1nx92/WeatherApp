@@ -1,4 +1,4 @@
-package com.example.wheaterapp.data.presentation.screen
+package com.example.wheaterapp.presentation.screen
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.wheaterapp.data.presentation.viewModel.MainViewModel
+import com.example.wheaterapp.presentation.viewModel.MainViewModel
 import com.example.wheaterapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -11,6 +11,7 @@ class WeatherMapper {
         humidity = apiData.main.humidity,
         speed = apiData.wind.speed,
         lat = apiData.coord.lat,
-        lon = apiData.coord.lon
-        )
+        lon = apiData.coord.lon,
+        icon = apiData.weather[0].icon
+    )
 }

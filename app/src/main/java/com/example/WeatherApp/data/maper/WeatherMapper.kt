@@ -1,7 +1,7 @@
-package com.example.wheaterapp.data.maper
+package com.example.WeatherApp.data.maper
 
-import com.example.wheaterapp.data.network.model.WeatherModel
-import com.example.wheaterapp.domain.WeatherInfo
+import com.example.WeatherApp.data.network.model.WeatherModel
+import com.example.WeatherApp.domain.WeatherInfo
 
 class WeatherMapper {
     fun mapApiDataToDomain(apiData: WeatherModel): WeatherInfo = WeatherInfo(

@@ -1,10 +1,10 @@
-package com.example.wheaterapp.data.repository
+package com.example.WeatherApp.data.repository
 
-import com.example.wheaterapp.data.maper.WeatherMapper
-import com.example.wheaterapp.data.network.service.WeatherApiFactory
-import com.example.wheaterapp.data.network.model.WeatherModel
-import com.example.wheaterapp.domain.Result
-import com.example.wheaterapp.domain.WeatherRepository
+import com.example.WeatherApp.data.maper.WeatherMapper
+import com.example.WeatherApp.data.network.service.WeatherApiFactory
+import com.example.WeatherApp.data.network.model.WeatherModel
+import com.example.WeatherApp.domain.Result
+import com.example.WeatherApp.domain.WeatherRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type

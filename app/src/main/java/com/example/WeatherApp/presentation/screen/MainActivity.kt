@@ -1,4 +1,4 @@
-package com.example.wheaterapp.presentation.screen
+package com.example.WeatherApp.presentation.screen
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.wheaterapp.databinding.ActivityMainBinding
-import com.example.wheaterapp.domain.Result
-import com.example.wheaterapp.presentation.viewModel.MainViewModel
+import com.example.WeatherApp.databinding.ActivityMainBinding
+import com.example.WeatherApp.domain.Result
+import com.example.WeatherApp.presentation.viewModel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var GET: SharedPreferences
@@ -27,12 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-
-        GET = getSharedPreferences(packageName, MODE_PRIVATE)
-        SET = GET.edit()
-
-        val cName = GET.getString("cityName", "ankara")
-        binding.edtCityName.setText(cName)
+        val cName = sharedPreferencesSetting()
 
         viewModel.refreshData(cName ?: "")
         getLiveData()
@@ -44,6 +39,15 @@ class MainActivity : AppCompatActivity() {
         binding.imgSearchCity.setOnClickListener {
             clickSearchCity()
         }
+    }
+
+    private fun sharedPreferencesSetting(): String? {
+        GET = getSharedPreferences(packageName, MODE_PRIVATE)
+        SET = GET.edit()
+
+        val cName = GET.getString("cityName", "moscow")
+        binding.edtCityName.setText(cName)
+        return cName
     }
 
     private fun swipeRefresh(cName: String?) {
@@ -67,15 +71,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getLiveData() {
-        viewModel.weatherData.observe(this, { data:Result ->
+        viewModel.weatherData.observe(this, { data: Result ->
             when (data) {
                 is Result.Loading -> {
                     binding.pbLoading.isVisible = true
+                    binding.llData.isVisible = false
+                    binding.llSearch.isVisible = false
                 }
                 is Result.Success -> {
                     with(binding) {
+                        llSearch.isVisible = true
                         pbLoading.isVisible = false
-                        llData.visibility = View.VISIBLE
+                        llData.isVisible = true
                         tvDegree.text = data.weatherInfo.temp.toString()
                         tvCountryCode.text = data.weatherInfo.country
                         tvCityName.text = data.weatherInfo.name
@@ -83,17 +90,22 @@ class MainActivity : AppCompatActivity() {
                         tvWindSpeed.text = data.weatherInfo.speed.toString()
                         tvLat.text = data.weatherInfo.lat.toString()
                         tvLon.text = data.weatherInfo.lon.toString()
-                        binding.tvError.isVisible = false
+                        tvError.isVisible = false
 
-                    Glide.with(this@MainActivity)
-                        .load("https://openweathermap.org/img/wn/" +data.weatherInfo.icon + "@2x.png")
-                        .into(imgWeatherPictures)
+                        Glide.with(this@MainActivity)
+                            .load("https://openweathermap.org/img/wn/" + data.weatherInfo.icon + "@2x.png")
+                            .into(imgWeatherPictures)
                     }
                 }
                 is Result.Error -> {
+                    binding.llSearch.isVisible = false
                     binding.pbLoading.isVisible = false
                     binding.tvError.isVisible = true
-                    Toast.makeText(this,"Error ${data.exception.localizedMessage}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        this,
+                        "Error ${data.exception.localizedMessage}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         })

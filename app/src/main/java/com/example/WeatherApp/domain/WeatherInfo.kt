@@ -1,4 +1,4 @@
-package com.example.wheaterapp.domain
+package com.example.WeatherApp.domain
 
 data class WeatherInfo(
     val temp: Double,

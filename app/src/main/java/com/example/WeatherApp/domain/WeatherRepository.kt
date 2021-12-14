@@ -1,4 +1,4 @@
-package com.example.wheaterapp.domain
+package com.example.WeatherApp.domain
 
 interface WeatherRepository {
    suspend fun getWeatherData(cityName: String):Result

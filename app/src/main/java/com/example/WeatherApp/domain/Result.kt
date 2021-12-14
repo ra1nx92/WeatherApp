@@ -1,4 +1,4 @@
-package com.example.wheaterapp.domain
+package com.example.WeatherApp.domain
 
 import java.lang.Exception
 

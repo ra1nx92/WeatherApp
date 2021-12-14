@@ -1,10 +1,9 @@
-package com.example.wheaterapp.data.network.service
+package com.example.WeatherApp.data.network.service
 
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 

@@ -1,6 +1,6 @@
 package com.example.wheaterapp.data.maper
 
-import com.example.wheaterapp.data.network.service.model.WeatherModel
+import com.example.wheaterapp.data.network.model.WeatherModel
 import com.example.wheaterapp.domain.WeatherInfo
 
 class WeatherMapper {

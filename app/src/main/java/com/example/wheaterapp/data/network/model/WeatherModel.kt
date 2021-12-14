@@ -1,8 +1,5 @@
-package com.example.wheaterapp.data.network.service.model
+package com.example.wheaterapp.data.network.model
 
-import com.example.wheaterapp.data.network.model.Clouds
-import com.example.wheaterapp.data.network.model.Coord
-import com.example.wheaterapp.data.network.model.Main
 import com.google.gson.annotations.SerializedName
 
 data class WeatherModel(

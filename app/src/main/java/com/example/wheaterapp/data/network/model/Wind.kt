@@ -1,4 +1,4 @@
-package com.example.wheaterapp.data.network.service.model
+package com.example.wheaterapp.data.network.model
 
 import com.google.gson.annotations.SerializedName
 

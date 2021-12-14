@@ -1,2 +1,2 @@
 # WeatherApp
-MVVM\Coroutines\Retrofit2\Glide
+Kotlin\MVVM\Coroutines\Retrofit2\Glide

@@ -12,7 +12,7 @@ object WeatherApiFactory {
 
     private const val BASE_URL = "https://api.openweathermap.org/"
 
-    val dataService = initRetrofit().create(WeatherApi::class.java)
+    val dataService: WeatherApi = initRetrofit().create(WeatherApi::class.java)
 
     private fun initRetrofit():Retrofit {
         val client = OkHttpClient.Builder()

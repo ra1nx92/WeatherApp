@@ -1,19 +1,24 @@
-package com.example.wheaterapp.data.presentation.screen
+package com.example.wheaterapp.presentation.screen
 
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.wheaterapp.data.presentation.viewModel.MainViewModel
 import com.example.wheaterapp.databinding.ActivityMainBinding
+import com.example.wheaterapp.domain.Result
+import com.example.wheaterapp.presentation.viewModel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var GET: SharedPreferences
     private lateinit var SET: SharedPreferences.Editor
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProvider(this)[MainViewModel::class.java]
+    }
 
-    private val viewModel: MainViewModel by viewModels()
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -21,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
 
         GET = getSharedPreferences(packageName, MODE_PRIVATE)
         SET = GET.edit()
@@ -58,55 +64,36 @@ class MainActivity : AppCompatActivity() {
         SET.putString("cityName", cityName)
         SET.commit()
         viewModel.refreshData(cityName)
-        getLiveData()
     }
 
     private fun getLiveData() {
-        viewModel.weatherData.observe(this, { data ->
-            data?.let {
-                with(binding) {
-                    llData.visibility = View.VISIBLE
-                    pbLoading.visibility = View.GONE
-                    tvDegree.text = data.main.temp.toString()
-                    tvCountryCode.text = data.sys.country
-                    tvCityName.text = data.name
-                    tvHumidity.text = data.main.humidity.toString()
-                    tvWindSpeed.text = data.wind.speed.toString()
-                    tvLat.text = data.coord.lat.toString()
-                    tvLon.text = data.coord.lon.toString()
+        viewModel.weatherData.observe(this, { data:Result ->
+            when (data) {
+                is Result.Loading -> {
+                    binding.pbLoading.isVisible = true
+                }
+                is Result.Success -> {
+                    with(binding) {
+                        pbLoading.isVisible = false
+                        llData.visibility = View.VISIBLE
+                        tvDegree.text = data.weatherInfo.temp.toString()
+                        tvCountryCode.text = data.weatherInfo.country
+                        tvCityName.text = data.weatherInfo.name
+                        tvHumidity.text = data.weatherInfo.humidity.toString()
+                        tvWindSpeed.text = data.weatherInfo.speed.toString()
+                        tvLat.text = data.weatherInfo.lat.toString()
+                        tvLon.text = data.weatherInfo.lon.toString()
+                        binding.tvError.isVisible = false
 
                     Glide.with(this@MainActivity)
-                        .load("https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
+                        .load("https://openweathermap.org/img/wn/" +data.weatherInfo.icon + "@2x.png")
                         .into(imgWeatherPictures)
-                }
-            }
-        })
-
-        viewModel.weatherLoad.observe(this, { load ->
-            load?.let {
-                with(binding) {
-                    if (it) {
-                        pbLoading.visibility = View.VISIBLE
-                        tvError.visibility = View.GONE
-                        llData.visibility = View.GONE
-                    } else {
-                        pbLoading.visibility = View.GONE
                     }
                 }
-            }
-
-        })
-
-        viewModel.weatherError.observe(this, { error ->
-            error?.let {
-                with(binding) {
-                    if (it) {
-                        tvError.visibility = View.VISIBLE
-                        llData.visibility = View.GONE
-                        pbLoading.visibility = View.GONE
-                    } else {
-                        tvError.visibility = View.GONE
-                    }
+                is Result.Error -> {
+                    binding.pbLoading.isVisible = false
+                    binding.tvError.isVisible = true
+                    Toast.makeText(this,"Error ${data.exception.localizedMessage}", Toast.LENGTH_LONG).show()
                 }
             }
         })

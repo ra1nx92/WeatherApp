@@ -4,9 +4,9 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.WeatherApp.databinding.ActivityMainBinding
 import com.example.WeatherApp.domain.Result
@@ -15,9 +15,7 @@ import com.example.WeatherApp.presentation.viewModel.MainViewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var GET: SharedPreferences
     private lateinit var SET: SharedPreferences.Editor
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
-    }
+    private val viewModel: MainViewModel by viewModels()
 
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -98,14 +96,27 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 is Result.Error -> {
-                    binding.llSearch.isVisible = false
-                    binding.pbLoading.isVisible = false
-                    binding.tvError.isVisible = true
+                    with(binding) {
+                        llSearch.isVisible = true
+                        pbLoading.isVisible = false
+                        tvError.isVisible = true
+                    }
                     Toast.makeText(
                         this,
                         "Error ${data.exception.localizedMessage}",
                         Toast.LENGTH_LONG
                     ).show()
+                }
+                is Result.NetworkError -> {
+                    with(binding) {
+                        pbLoading.isVisible = false
+                        llSearch.isVisible = true
+                        tvError.isVisible = true
+                    }
+                    Toast.makeText(this,
+                        "Отсутствует подключение к интернету",
+                        Toast.LENGTH_LONG)
+                        .show()
                 }
             }
         })

@@ -6,18 +6,17 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.wheaterapp.databinding.ActivityMainBinding
 import com.example.wheaterapp.domain.Result
 import com.example.wheaterapp.presentation.viewModel.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var GET: SharedPreferences
     private lateinit var SET: SharedPreferences.Editor
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
-    }
+
+    private val viewModel: MainViewModel by viewModel()
 
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)

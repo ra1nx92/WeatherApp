@@ -3,7 +3,6 @@ package com.example.wheaterapp.presentation.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.wheaterapp.data.repository.WeatherRepositoryImpl
 import com.example.wheaterapp.domain.GetWeatherDataUseCase
 import com.example.wheaterapp.domain.Result
 import com.example.wheaterapp.domain.WeatherRepository

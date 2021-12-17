@@ -1,6 +1,5 @@
 package com.example.wheaterapp.data.repository
 
-import com.example.wheaterapp.data.network.service.WeatherApiFactory
 import com.example.wheaterapp.data.network.model.WeatherModel
 import com.example.wheaterapp.data.network.service.WeatherApi
 import com.example.wheaterapp.domain.Result

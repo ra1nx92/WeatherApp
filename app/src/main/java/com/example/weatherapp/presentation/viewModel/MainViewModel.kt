@@ -1,16 +1,16 @@
-package com.example.WeatherApp.presentation.viewModel
+package com.example.wheaterapp.presentation.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.WeatherApp.data.repository.WeatherRepositoryImpl
-import com.example.WeatherApp.domain.GetWeatherDataUseCase
-import com.example.WeatherApp.domain.Result
+import com.example.weatherapp.domain.GetWeatherDataUseCase
+import com.example.weatherapp.domain.WeatherRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import com.example.weatherapp.domain.Result
 
-class MainViewModel() : ViewModel() {
-    private val weatherRepository = WeatherRepositoryImpl()
+class MainViewModel(private val weatherRepository : WeatherRepository) : ViewModel() {
+
     val weatherData = MutableLiveData<Result>()
     private val useCaseData = GetWeatherDataUseCase(weatherRepository)
 

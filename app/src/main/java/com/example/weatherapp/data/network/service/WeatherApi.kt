@@ -1,4 +1,4 @@
-package com.example.WeatherApp.data.network.service
+package com.example.weatherapp.data.network.service
 
 import okhttp3.ResponseBody
 import retrofit2.http.GET

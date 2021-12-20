@@ -9,4 +9,5 @@
     <string name="humidity">Влажность % :</string>
     <string name="country_code">Код страны</string>
     <string name="city_name_et">Введите название города</string>
+    <string name="celsius">°C</string>
 </resources>

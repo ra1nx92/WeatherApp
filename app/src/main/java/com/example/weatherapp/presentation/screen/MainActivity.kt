@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.example.weatherapp.R
 import com.example.weatherapp.databinding.ActivityMainBinding
 import com.example.wheaterapp.presentation.viewModel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,12 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-
-        GET = getSharedPreferences(packageName, MODE_PRIVATE)
-        SET = GET.edit()
-
-        val cName = GET.getString("cityName", "ankara")
-        binding.edtCityName.setText(cName)
+        val cName = sharedPreferencesSetting()
 
         viewModel.refreshData(cName ?: "")
         getLiveData()
@@ -43,6 +39,15 @@ class MainActivity : AppCompatActivity() {
         binding.imgSearchCity.setOnClickListener {
             clickSearchCity()
         }
+    }
+
+    private fun sharedPreferencesSetting(): String? {
+        GET = getSharedPreferences(packageName, MODE_PRIVATE)
+        SET = GET.edit()
+
+        val cName = GET.getString("cityName", "moscow")
+        binding.edtCityName.setText(cName)
+        return cName
     }
 
     private fun swipeRefresh(cName: String?) {
@@ -75,7 +80,9 @@ class MainActivity : AppCompatActivity() {
                     with(binding) {
                         pbLoading.isVisible = false
                         llData.visibility = View.VISIBLE
-                        tvDegree.text = data.weatherInfo.temp.toString()
+                        tvDegree.text = ("""
+                         """ + data.weatherInfo.temp + getString(R.string.celsius) + """
+                         """).trimIndent()
                         tvCountryCode.text = data.weatherInfo.country
                         tvCityName.text = data.weatherInfo.name
                         tvHumidity.text = data.weatherInfo.humidity.toString()

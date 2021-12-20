@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.weatherapp.domain.Result
 
-class MainViewModel(private val weatherRepository : WeatherRepository) : ViewModel() {
+class MainViewModel(weatherRepository : WeatherRepository) : ViewModel() {
 
     val weatherData = MutableLiveData<Result>()
     private val useCaseData = GetWeatherDataUseCase(weatherRepository)

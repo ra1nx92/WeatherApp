@@ -1,3 +1,3 @@
 # WeatherApp
-Kotlin\MVVM\Coroutines\Retrofit2\Glide
+Kotlin\MVVM\Koin\Coroutines\Retrofit2\Glide
 

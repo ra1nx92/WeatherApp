@@ -27,4 +27,8 @@ class WeatherRepositoryImpl(
             Result.Error(e)
         }
     }
+
+    override fun getUserSettings(): String? {
+      TODO("Not yet implemented")
+    }
 }

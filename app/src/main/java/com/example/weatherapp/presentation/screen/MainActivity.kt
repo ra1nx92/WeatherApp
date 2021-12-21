@@ -1,6 +1,5 @@
 package com.example.weatherapp.presentation.screen
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,13 +8,11 @@ import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.ActivityMainBinding
-import com.example.wheaterapp.presentation.viewModel.MainViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.example.weatherapp.domain.Result
+import com.example.weatherapp.presentation.view_model.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var GET: SharedPreferences
-    private lateinit var SET: SharedPreferences.Editor
 
     private val viewModel: MainViewModel by viewModel()
 
@@ -29,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         val cName = sharedPreferencesSetting()
 
-        viewModel.refreshData(cName ?: "")
+        viewModel.refreshData(cName)
         getLiveData()
 
         binding.swipeRefreshLayout.setOnRefreshListener {
@@ -41,11 +38,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun sharedPreferencesSetting(): String? {
-        GET = getSharedPreferences(packageName, MODE_PRIVATE)
-        SET = GET.edit()
-
-        val cName = GET.getString("cityName", "moscow")
+    private fun sharedPreferencesSetting(): String {
+        val cName = viewModel.loadSettings().toString()
         binding.edtCityName.setText(cName)
         return cName
     }
@@ -56,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             tvError.visibility = View.GONE
             pbLoading.visibility = View.GONE
 
-            val cityName = GET.getString("cityName", cName)
+            val cityName = viewModel.loadSettings()
             edtCityName.setText(cityName)
             viewModel.refreshData(cityName ?: "")
             swipeRefreshLayout.isRefreshing = false
@@ -65,8 +59,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun clickSearchCity() {
         val cityName = binding.edtCityName.text.toString()
-        SET.putString("cityName", cityName)
-        SET.commit()
+        viewModel.saveSettings(cityName)
         viewModel.refreshData(cityName)
     }
 

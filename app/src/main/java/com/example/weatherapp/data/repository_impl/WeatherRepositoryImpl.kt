@@ -1,8 +1,8 @@
-package com.example.weatherapp.data.repository
+package com.example.weatherapp.data.repository_impl
 
 import com.example.weatherapp.data.network.model.WeatherModel
 import com.example.weatherapp.data.network.service.WeatherApi
-import com.example.weatherapp.domain.WeatherRepository
+import com.example.weatherapp.domain.repository.WeatherRepository
 import com.example.weatherapp.domain.WeatherDomainMapper
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

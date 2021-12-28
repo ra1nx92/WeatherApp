@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipe_refresh_layout"
@@ -76,9 +75,9 @@
                     android:id="@+id/img_search_city"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
+                    android:contentDescription="TODO"
                     android:padding="10dp"
-                    android:src="@drawable/ic_baseline_search_24"
-                    android:contentDescription="TODO" />
+                    android:src="@drawable/ic_baseline_search_24" />
 
             </LinearLayout>
 
@@ -152,6 +151,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/purple_200"
+
                         android:orientation="horizontal"
                         android:padding="15dp">
 
@@ -211,17 +211,50 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tv_lat"
+                                android:id="@+id/tv_feels"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/info"
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tv_lon"
+                                android:id="@+id/tv_press"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/info"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/perсent"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/m_s"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/celsius"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/mm_rt_s"
                                 android:textStyle="bold" />
 
                         </LinearLayout>

@@ -6,7 +6,7 @@ import com.example.weatherapp.data.network.service.WeatherApiFactory
 import com.example.weatherapp.data.repository_impl.UserSettingRepositoryImpl
 import com.example.weatherapp.data.repository_impl.WeatherRepositoryImpl
 import com.example.weatherapp.domain.repository.UserSettingsRepository
-import com.example.weatherapp.domain.WeatherDomainMapper
+import com.example.weatherapp.data.mapper.WeatherMapper
 import com.example.weatherapp.domain.repository.WeatherRepository
 import com.example.weatherapp.domain.use_cases.GetLoadCityUseCase
 import com.example.weatherapp.domain.use_cases.GetSaveCityUseCase
@@ -18,10 +18,10 @@ val applicationModule = module {
     fun provideApi(): WeatherApi {
         return WeatherApiFactory.dataService
     }
-    fun provideMapper(): WeatherDomainMapper {
-        return WeatherDomainMapper.Base()
+    fun provideMapper(): WeatherMapper {
+        return WeatherMapper.Base()
     }
-    fun provideRepository(api: WeatherApi, mapper: WeatherDomainMapper): WeatherRepository {
+    fun provideRepository(api: WeatherApi, mapper: WeatherMapper): WeatherRepository {
         return WeatherRepositoryImpl(api, mapper)
     }
     fun provideSettingRepository(context: Context): UserSettingsRepository {
@@ -39,7 +39,7 @@ val applicationModule = module {
 
 
     single<WeatherApi> { provideApi() }
-    single<WeatherDomainMapper> { provideMapper() }
+    single<WeatherMapper> { provideMapper() }
     single<WeatherRepository> { provideRepository(get(), get()) }
     single<UserSettingsRepository> { provideSettingRepository(androidContext()) }
     single<GetLoadCityUseCase> { provideLoadCityUseCase(get()) }

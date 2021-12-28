@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         getLiveData()
 
         binding.swipeRefreshLayout.setOnRefreshListener {
-            swipeRefresh(cName)
+            swipeRefresh()
         }
 
         binding.imgSearchCity.setOnClickListener {
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         return cName
     }
 
-    private fun swipeRefresh(cName: String?) {
+    private fun swipeRefresh() {
         with(binding) {
             llData.visibility = View.GONE
             tvError.visibility = View.GONE
@@ -80,8 +80,8 @@ class MainActivity : AppCompatActivity() {
                         tvCityName.text = data.weatherInfo.name
                         tvHumidity.text = data.weatherInfo.humidity.toString()
                         tvWindSpeed.text = data.weatherInfo.speed.toString()
-                        tvLat.text = data.weatherInfo.lat.toString()
-                        tvLon.text = data.weatherInfo.lon.toString()
+                        tvFeels.text = data.weatherInfo.feelsLike.toString()
+                        tvPress.text = data.weatherInfo.pressure.toString()
                         binding.tvError.isVisible = false
 
                         Glide.with(this@MainActivity)

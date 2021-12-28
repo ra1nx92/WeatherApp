@@ -3,11 +3,14 @@
     <string name="error_message">Error, Try Again!</string>
     <string name="city_name">Город</string>
     <string name="info">info</string>
-    <string name="longitude">Долгота :</string>
-    <string name="width">Широта :</string>
-    <string name="wind_speed">Скорость ветра м/с :</string>
-    <string name="humidity">Влажность % :</string>
+    <string name="longitude">Атмосферное давление :</string>
+    <string name="width">Ощущается как :</string>
+    <string name="wind_speed">Скорость ветра :</string>
+    <string name="humidity">Влажность :</string>
     <string name="country_code">Код страны</string>
     <string name="city_name_et">Введите название города</string>
     <string name="celsius">°C</string>
+    <string name="mm_rt_s">мм рт. ст.</string>
+    <string name="m_s">м/с</string>
+    <string name="perсent">%</string>
 </resources>

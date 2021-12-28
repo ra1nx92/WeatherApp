@@ -1,8 +1,6 @@
-package com.example.weatherapp
+package com.example.weatherapp.di
 
 import android.app.Application
-import com.example.weatherapp.di.applicationModule
-import com.example.weatherapp.di.screenModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

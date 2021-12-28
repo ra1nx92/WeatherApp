@@ -6,7 +6,7 @@ data class WeatherInfo(
     val name: String,
     val humidity: Int,
     val speed: Double,
-    val lat: Double,
-    val lon: Double,
+    val feelsLike: Double,
+    val pressure: Int,
     val icon: String
 )

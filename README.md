@@ -14,6 +14,6 @@ ___
 
 #### Чтобы узнать информацию о погоде в необходимом городе, необходимо ввести его название в поисковое поле, находящееся в верхней части экрана, после чего необходимо нажать на значок поиска. В приложении реализована функция сохранения последнего введенного города.
 #### Информацию можно обновить по свайпу вниз по экрану, либо нажав на значок поиска
-![search](https://psv4.userapi.com/c240331/u38326722/docs/d53/10eb7f34b86b/video3701702455.gif?extra=BoosCJAq6Il9-nX7lOwzRNIAxbveqMmdKh4ar9Z_JuVKaduGOc6aVDbNbkZbE0tGgqK3k4hVue0jsLjEMrkgEm75OwFuFbWZKtfAPlHZvwXHKdAd5KNRXW9SOm-iW0tbUKIufl-sqBnwlj-yJW0)
+![search](https://psv4.userapi.com/c240331/u38326722/docs/d53/4d5fe8389bbe/video3701702455.gif?extra=JWzCfqXbaPQEaU3bQJdkzOK0Lg5IRmp1k7K2Tak5tN9VJp6jo9xi_nuQsRjzlw26JL6_2WO4xyvPl78rPqdMOLMvAjPaXM5qSzcl5YC69U6Xc2EAsydwUGmoZ6OVdxmV9o-fgwbh5dcgi88elYWrzKQ)
 
 
